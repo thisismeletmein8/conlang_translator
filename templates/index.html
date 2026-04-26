@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<form method="POST">
+    <label for="english_text">Enter English text:</label>
+    <input type="text" id="english_text" name="english_text">
+    <button type="submit">Submit</button>
+</form> 
+<!--Above it's getting the code and below it's displaying the result.-->
+{% if input %}
+    <p>You wrote: {{ input }}</p> <!--It does say you wrote and then in pig latin it's-->
+{% endif %}
+
+{% if result %}
+    <p>In Pig Latin it's {{ result }}</p>
+{% endif %}
+<form method="POST">
+    <label for="pig_latin_text">Enter Pig Latin text:</label>
+    <input type="text" id="pig_latin_text" name="pig_latin_text">
+    <button type="submit">Submit</button>
+</form>
