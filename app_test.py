@@ -19,5 +19,5 @@ compare(into_pig_latin("Interesting."), "Interestingway.")
 compare(into_pig_latin("No"), "Onay")
 compare(into_pig_latin("that"), "atthay")
 
-#compare(into_english("owhay?"), "how?")
-#compare(into_english("Interestingway."), "Interesting.")
+compare(into_english("owhay?"), "how?")
+compare(into_english("interestingway."), "interesting.")
