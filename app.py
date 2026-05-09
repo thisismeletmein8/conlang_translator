@@ -1,9 +1,10 @@
+"""This is the actual code of the conlang translator."""
 from flask import Flask, render_template, request
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    """This is the main app code."""
     in_english = None
     output = ""
     in_pig_latin = None
@@ -15,7 +16,7 @@ def home():
 # All of the above is window dressing and then some interesting weird systematic code!
             words = in_english.split()
             for word in words:
-                output = output + " " + into_pig_latin(word)       
+                output = output + " " + into_pig_latin(word)
         elif input_language == 'pig-latin':
             in_pig_latin = request.form.get('input')
             output = into_english(in_pig_latin)
@@ -24,6 +25,7 @@ def home():
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 def into_english(text):
+    """This goes from Pig Latin into English."""
     last_letter = text[-1:]
     output = text
     if last_letter in [",", ".", "!", "?"]:
@@ -39,15 +41,15 @@ def into_english(text):
         if not last_letter == "w":
             output = last_letter + output
             return output
-        else:
-            print("Oh no, it's a bit tricky so PLEASE don't use this or anything? haha --- NEED HUMAN CONFIRMATION")
+        print("It's hard so if we don't get it right it's fine!")
     else:
         print("Wait a minute")
     return output
 def into_pig_latin(text): # Supplementary functions
+    """And this goes the other way."""
     # Get first letter and check if it is capitalized
     # If so, set starts_with_capital? to True
-    # if not, set starts_with_capital? to False
+    # if not, set starts_with_capital? to False and made a major refactor
     starts_with_capital = text[0].isupper()
     last_letter = text[-1:]
     output = text
@@ -63,8 +65,7 @@ def into_pig_latin(text): # Supplementary functions
         if letter in ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]:
             vowel_position = index
             break
-        else:
-            consonant_cluster = consonant_cluster + letter
+        consonant_cluster = consonant_cluster + letter
     if text[0] in ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]: # the vowels
         output = output + "way"
     else:

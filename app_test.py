@@ -1,6 +1,8 @@
+"""The app's test file"""
 from app import into_english, into_pig_latin
 
 def compare(real, expected):
+    """It's just a nice test that tests if it's working"""
     print("Expected: " + expected)
     print(F"Real: {real}")
     if real != expected:
