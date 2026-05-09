@@ -4,9 +4,10 @@
 </head>
 <h1>Conlang Translator</h1>
 <form method="POST">
-    <label for="english_text">Enter English text:</label>
-    <input type="text" id="english_text" name="english_text">
-    <button type="submit">Submit</button>
+    <label for="input">Enter text:</label>
+    <input type="text" id="input" name="input">
+    <button type="submit" name="submit-input" value="english">Submit English text</button>
+    <button type="submit" name="submit-input" value="pig-latin">Submit Pig Latin text</button>
 </form> 
 <!--Above it's getting the code and below it's displaying the result.-->
 {% if input %}
@@ -16,8 +17,3 @@
 {% if result %}
     <p>In Pig Latin it's {{ result }}</p>
 {% endif %}
-<form method="POST">
-    <label for="pig_latin_text">Enter Pig Latin text:</label>
-    <input type="text" id="pig_latin_text" name="pig_latin_text">
-    <button type="submit">Submit</button>
-</form>

@@ -8,14 +8,16 @@ def home():
     output = ""
     in_pig_latin = None
     if request.method == 'POST':
-        in_english = request.form.get('english_text')
-        in_pig_latin = request.form.get("pig_latin_text")
-        if in_english:
+        print(request.form)
+        input_language = request.form.get('submit-input')
+        if input_language == "english":
+            in_english = request.form.get("input")
 # All of the above is window dressing and then some interesting weird systematic code!
             words = in_english.split()
             for word in words:
                 output = output + " " + into_pig_latin(word)       
-        elif in_pig_latin:
+        elif input_language == 'pig-latin':
+            in_pig_latin = request.form.get('input')
             output = into_english(in_pig_latin)
         else:
             print("Wait a minute minute...")
