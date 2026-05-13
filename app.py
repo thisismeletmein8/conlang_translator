@@ -7,7 +7,6 @@ def home():
     """This is the main app code."""
     in_english = None
     output = ""
-    in_pig_latin = None
     if request.method == 'POST':
         print(request.form)
         input_language = request.form.get('submit-input')
@@ -17,34 +16,10 @@ def home():
             words = in_english.split()
             for word in words:
                 output = output + " " + into_pig_latin(word)
-        elif input_language == 'pig-latin':
-            in_pig_latin = request.form.get('input')
-            output = into_english(in_pig_latin)
         else:
             print("Wait a minute minute...")
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
-def into_english(text):
-    """This goes from Pig Latin into English."""
-    last_letter = text[-1:]
-    output = text
-    if last_letter in [",", ".", "!", "?"]:
-        text = text[:-1]
-        output = into_english(text)
-        print("Output: " + output + " And the last letter is: " + last_letter + " .")
-        output = output + last_letter
-        return output
-    if text[-2:] == 'ay':
-        output = text[:-2]
-        last_letter = output[-1:]
-        output = output[:-1]
-        if not last_letter == "w":
-            output = last_letter + output
-            return output
-        print("It's hard so if we don't get it right it's fine!")
-    else:
-        print("Wait a minute")
-    return output
 def into_pig_latin(text): # Supplementary functions
     """And this goes the other way."""
     # Get first letter and check if it is capitalized
