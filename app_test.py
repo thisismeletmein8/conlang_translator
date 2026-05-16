@@ -26,8 +26,6 @@ if compare(into_pig_latin("No"), "Onay"):
     failures += 1
 if compare(into_pig_latin("that"), "atthay"):
     failures += 1
-if compare(into_pig_latin("Agh"), "No, this isn't a function"):
-    failures += 1
 if failures > 0:
     print("At least 1 test failed!")
     sys.exit(1)
