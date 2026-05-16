@@ -9,15 +9,18 @@ def home():
     output = ""
     if request.method == 'POST':
         print(request.form)
-        input_language = request.form.get('submit-input')
-        if input_language == "english":
-            in_english = request.form.get("input")
+        in_english = request.form.get("input")
 # All of the above is window dressing and then some interesting weird systematic code!
-            words = in_english.split()
+        words = in_english.split()
+        target_language = request.form.get('conlang')
+        if target_language == "verdurian":
+            output = "Hey, why are you using this? Scram, we're working on it!"
+        elif target_language == 'pig_latin':
             for word in words:
-                output = output + " " + into_pig_latin(word)
+                output += " " + into_pig_latin(word)
+            output = "In Pig Latin it's " + output
         else:
-            print("Wait a minute minute...")
+            print("I... don't think that you bothered to use the website, you just broke the code!")
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 def into_pig_latin(text): # Supplementary functions

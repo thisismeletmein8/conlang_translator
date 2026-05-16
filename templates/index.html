@@ -6,7 +6,12 @@
 <form method="POST">
     <label for="input">Enter text:</label>
     <input type="text" id="input" name="input">
-    <button type="submit" name="submit-input" value="english">Submit English text</button>
+    <label for="language">Choose a conlang:</label>
+    <select name="conlang" id="language" required>
+        <option value="pig_latin">Pig Latin</option>
+        <option value="verdurian">Verdurian (in progress)</option>
+    </select>
+    <button type="submit">Submit English text</button>
 </form> 
 <!--Above it's getting the code and below it's displaying the result.-->
 {% if input %}
@@ -14,5 +19,5 @@
 {% endif %}
 
 {% if result %}
-    <p>In Pig Latin it's {{ result }}</p>
+    <p>{{ result }}</p>
 {% endif %}
