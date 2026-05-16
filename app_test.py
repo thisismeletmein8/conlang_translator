@@ -1,19 +1,33 @@
 """The app's test file"""
+import sys
 from app import into_pig_latin
-
+failures = 0
 def compare(real, expected):
     """It's just a nice test that tests if it's working"""
     print("Expected: " + expected)
     print(F"Real: {real}")
     if real != expected:
         print("❌ It's somehow wrong!")
-    else:
-        print("✅ It's somehow right?")
+        return True
+    print("✅ It's somehow right?")
+    return False
 
-compare(into_pig_latin("aligator"), "aligatorway")
-compare(into_pig_latin("tall"), "alltay")
-compare(into_pig_latin("how?"), "owhay?")
-compare(into_pig_latin("ow!"), "owway!")
-compare(into_pig_latin("Interesting."), "Interestingway.")
-compare(into_pig_latin("No"), "Onay")
-compare(into_pig_latin("that"), "atthay")
+if compare(into_pig_latin("aligator"), "aligatorway"):
+    failures += 1
+if compare(into_pig_latin("tall"), "alltay"):
+    failures += 1
+if compare(into_pig_latin("how?"), "owhay?"):
+    failures += 1
+if compare(into_pig_latin("ow!"), "owway!"):
+    failures += 1
+if compare(into_pig_latin("Interesting."), "Interestingway."):
+    failures += 1
+if compare(into_pig_latin("No"), "Onay"):
+    failures += 1
+if compare(into_pig_latin("that"), "atthay"):
+    failures += 1
+if compare(into_pig_latin("Agh"), "No, this isn't a function"):
+    failures += 1
+if failures > 0:
+    print("At least 1 test failed!")
+    sys.exit(1)
