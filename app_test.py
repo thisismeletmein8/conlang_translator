@@ -1,6 +1,6 @@
 """The app's test file"""
 import sys
-from app import into_pig_latin
+from app import into_pig_latin, into_verdurian
 failures = 0
 def compare(real, expected):
     """It's just a nice test that tests if it's working"""
@@ -25,6 +25,10 @@ if compare(into_pig_latin("Interesting."), "Interestingway."):
 if compare(into_pig_latin("No"), "Onay"):
     failures += 1
 if compare(into_pig_latin("that"), "atthay"):
+    failures += 1
+if compare(into_verdurian("Verdurian"), "soa Sfahe"):
+    failures += 1
+if compare(into_verdurian("abandon"), "fäsir"):
     failures += 1
 if failures > 0:
     print("At least 1 test failed!")
