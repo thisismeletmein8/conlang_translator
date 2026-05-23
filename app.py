@@ -62,11 +62,12 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
-    with open('verdurian_dictionary.txt', 'r') as file:
+    verdurian_dictionary = {}
+    with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
         for line in file:
             array = line.strip().split(" - ")
             english_word = array[0][1:]
-            if len(array) > 1:
-                part_of_speech = array[1]
-                print(english_word, "And the part of speech is", part_of_speech)
-    return text
+            if len(array) > 2:
+                verdurian_word = array[2]
+                verdurian_dictionary[english_word] = verdurian_word
+    return verdurian_dictionary[text]

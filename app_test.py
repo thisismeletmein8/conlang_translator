@@ -26,7 +26,7 @@ if compare(into_pig_latin("No"), "Onay"):
     failures += 1
 if compare(into_pig_latin("that"), "atthay"):
     failures += 1
-if compare(into_verdurian("Verdurian"), "soa Sfahe"):
+if compare(into_verdurian("conjuror"), "žóuom"):
     failures += 1
 if compare(into_verdurian("abandon"), "fäsir"):
     failures += 1
