@@ -14,7 +14,9 @@ def home():
         words = in_english.split()
         target_language = request.form.get('conlang')
         if target_language == "verdurian":
-            output = "Hey, why are you using this? Scram, we're working on it!"
+            for word in words:
+                output += " " + into_verdurian(word)
+            output = "In Verdurian it's " + output
         elif target_language == 'pig_latin':
             for word in words:
                 output += " " + into_pig_latin(word)
@@ -54,3 +56,18 @@ def into_pig_latin(text): # Supplementary functions
     if starts_with_capital:
         output = output.capitalize() # Uppercase
     return output
+def into_verdurian(text):
+    """
+    Docstring for into_verdurian
+    It translates into Verdurian, an ACTUAL conlang, from English.
+    :param text: It lets you pass in English text to translate into Verdurian.
+    """
+    verdurian_dictionary = {}
+    with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
+        for line in file:
+            array = line.strip().split(" - ")
+            english_word = array[0][1:]
+            if len(array) > 2:
+                verdurian_word = array[2]
+                verdurian_dictionary[english_word] = verdurian_word
+    return verdurian_dictionary[text]
