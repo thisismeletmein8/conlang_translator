@@ -62,6 +62,7 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
+    starts_with_capital = text[0].isupper()
     verdurian_dictionary = {}
     with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
         for line in file:
@@ -70,4 +71,6 @@ def into_verdurian(text):
             if len(array) > 2:
                 verdurian_word = array[2]
                 verdurian_dictionary[english_word] = verdurian_word
+    if starts_with_capital:
+        return verdurian_dictionary[text.lower()].capitalize()
     return verdurian_dictionary[text]

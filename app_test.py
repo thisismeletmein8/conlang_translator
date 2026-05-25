@@ -30,6 +30,8 @@ if compare(into_verdurian("conjuror"), "žóuom"):
     failures += 1
 if compare(into_verdurian("abandon"), "fäsir"):
     failures += 1
+if compare(into_verdurian("Thither"), "Cečelán"):
+    failures += 1
 if failures > 0:
     print("At least 1 test failed!")
     sys.exit(1)
