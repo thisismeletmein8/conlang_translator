@@ -73,7 +73,7 @@ def into_verdurian(text):
                 verdurian_word = array[2]
                 verdurian_dictionary[english_word] = verdurian_word
     last_letter = text[-1]
-    if text[-1] in punctuation:
+    if last_letter in punctuation:
         text = text[:-1]
         if starts_with_capital:
             return verdurian_dictionary[text.lower()].capitalize() + last_letter
