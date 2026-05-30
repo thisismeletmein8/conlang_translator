@@ -25,6 +25,7 @@ def home():
             print("I... don't think that you bothered to use the website, you just broke the code!")
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
+punctuation = [".", ",", "!", "?"]
 def into_pig_latin(text): # Supplementary functions
     """And this goes the other way."""
     # Get first letter and check if it is capitalized
@@ -33,7 +34,7 @@ def into_pig_latin(text): # Supplementary functions
     starts_with_capital = text[0].isupper()
     last_letter = text[-1:]
     output = text
-    if last_letter in [",", ".", "!", "?"]:
+    if last_letter in punctuation:
         text = text[:-1]
         output = into_pig_latin(text)
         print("Output: " + output + " And the last letter is: " + last_letter + " .")
@@ -71,6 +72,12 @@ def into_verdurian(text):
             if len(array) > 2:
                 verdurian_word = array[2]
                 verdurian_dictionary[english_word] = verdurian_word
+    last_letter = text[-1]
+    if text[-1] in punctuation:
+        text = text[:-1]
+        if starts_with_capital:
+            return verdurian_dictionary[text.lower()].capitalize() + last_letter
+        return verdurian_dictionary[text] + last_letter
     if starts_with_capital:
         return verdurian_dictionary[text.lower()].capitalize()
     return verdurian_dictionary[text]
