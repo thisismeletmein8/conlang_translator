@@ -63,7 +63,29 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
+    verdurian_dictionary = get_verdurian_dictionary()
     starts_with_capital = text[0].isupper()
+    ends_with_punctuation = text[-1] in punctuation
+    verdurian_word = get_verdurian_word(
+        starts_with_capital,
+        ends_with_punctuation,
+        text,
+        verdurian_dictionary
+    )
+
+    if not verdurian_word:
+        return text
+
+    if starts_with_capital and ends_with_punctuation:
+        verdurian_word = verdurian_word.capitalize() + text[-1]
+    elif starts_with_capital:
+        verdurian_word = verdurian_word.capitalize()
+    elif ends_with_punctuation:
+        verdurian_word += text[-1]
+
+    return verdurian_word
+def get_verdurian_dictionary():
+    """Makes verdurian_dictionary available"""
     verdurian_dictionary = {}
     with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
         for line in file:
@@ -72,17 +94,24 @@ def into_verdurian(text):
             if len(array) > 2:
                 verdurian_word = array[2]
                 verdurian_dictionary[english_word] = verdurian_word
-    last_letter = text[-1]
-    if last_letter in punctuation:
-        stripped_text = text[:-1]
-        verdurian_word = verdurian_dictionary.get(stripped_text.lower())
-        if verdurian_word:
-            if starts_with_capital:
-                return verdurian_dictionary[stripped_text.lower()].capitalize() + last_letter
-            return verdurian_dictionary[stripped_text] + last_letter
-    verdurian_word = verdurian_dictionary.get(text.lower())
-    if verdurian_word:
-        if starts_with_capital:
-            return verdurian_dictionary[text.lower()].capitalize()
-        return verdurian_dictionary[text]
-    return text
+    return verdurian_dictionary
+def get_verdurian_word(starts_with_capital, ends_with_punctuation, text, verdurian_dictionary):
+    """
+    Docstring for get_verdurian_word
+    
+    :param starts_with_capital: boolean
+    :param ends_with_punctuation: boolean
+    :param text: string
+    :param verdurian_dictionary: dictionary
+    """
+    verdurian_word = ""
+    if starts_with_capital and ends_with_punctuation:
+        verdurian_word = verdurian_dictionary.get(text[:-1].lower())
+    elif starts_with_capital:
+        verdurian_word = verdurian_dictionary.get(text.lower())
+    elif ends_with_punctuation:
+        verdurian_word = verdurian_dictionary.get(text[:-1])
+    else:
+        verdurian_word = verdurian_dictionary.get(text)
+
+    return verdurian_word
