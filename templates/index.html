@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <title>Conlang Translator</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-<h1>Conlang Translator</h1>
-<form method="POST">
-    <label for="input">Enter text:</label>
-    <input type="text" id="input" name="input">
-    <label for="language">Choose a conlang:</label>
-    <select name="conlang" id="language" required>
-        <option value="pig_latin">Pig Latin</option>
-        <option value="verdurian">Verdurian (in progress)</option>
-    </select>
-    <button type="submit">Submit English text</button>
-</form> 
-<!--Above it's getting the code and below it's displaying the result.-->
-{% if input %}
-    <p>You wrote: {{ input }}</p> <!--It does say you wrote and then in pig latin it's-->
-{% endif %}
-
-{% if result %}
-    <p>{{ result }}</p>
-{% endif %}
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <title>Conlang Translator</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+    <h1>Conlang Translator</h1>
+    <form method="POST">
+        <label for="input">Enter text:</label>
+        <input type="text" id="input" name="input">
+        <label for="language">Choose a conlang:</label>
+        <select name="conlang" id="language" required>
+            <option value="pig_latin">Pig Latin</option>
+            <option value="verdurian">Verdurian (in progress)</option>
+        </select>
+        <button type="submit">Submit English text</button>
+    </form> 
+    <!--Above it's getting the code and below it's displaying the result.-->
+    {% if input %}
+        <p>You wrote: {{ input }}</p> <!--It does say you wrote and then in pig latin it's-->
+    {% endif %}
+    
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+    </body>
 </html>

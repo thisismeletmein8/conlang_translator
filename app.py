@@ -74,10 +74,15 @@ def into_verdurian(text):
                 verdurian_dictionary[english_word] = verdurian_word
     last_letter = text[-1]
     if last_letter in punctuation:
-        text = text[:-1]
+        stripped_text = text[:-1]
+        verdurian_word = verdurian_dictionary.get(stripped_text.lower())
+        if verdurian_word:
+            if starts_with_capital:
+                return verdurian_dictionary[stripped_text.lower()].capitalize() + last_letter
+            return verdurian_dictionary[stripped_text] + last_letter
+    verdurian_word = verdurian_dictionary.get(text.lower())
+    if verdurian_word:
         if starts_with_capital:
-            return verdurian_dictionary[text.lower()].capitalize() + last_letter
-        return verdurian_dictionary[text] + last_letter
-    if starts_with_capital:
-        return verdurian_dictionary[text.lower()].capitalize()
-    return verdurian_dictionary[text]
+            return verdurian_dictionary[text.lower()].capitalize()
+        return verdurian_dictionary[text]
+    return text
