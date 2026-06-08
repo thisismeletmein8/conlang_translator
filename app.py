@@ -130,3 +130,15 @@ def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, 
         verdurian_word += text[-1]
 
     return verdurian_word
+def from_verdurian(text):
+    """
+    Docstring for from_verdurian
+    It goes from Verdurian into English.
+    :param text: string
+    """
+    verdurian_dictionary = get_verdurian_dictionary()
+    print(verdurian_dictionary)
+    for english_word, verdurian_word in verdurian_dictionary:
+        if text == verdurian_word:
+            return english_word
+    return text
