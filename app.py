@@ -9,20 +9,24 @@ def home():
     output = ""
     if request.method == 'POST':
         print(request.form)
-        in_english = request.form.get("input")
+        if request.form.get("input"):
+            in_english = request.form.get("input")
 # All of the above is window dressing and then some interesting weird systematic code!
-        words = in_english.split()
-        target_language = request.form.get('conlang')
-        if target_language == "verdurian":
-            for word in words:
-                output += " " + into_verdurian(word)
-            output = "In Verdurian it's " + output
-        elif target_language == 'pig_latin':
-            for word in words:
-                output += " " + into_pig_latin(word)
-            output = "In Pig Latin it's " + output
+            words = in_english.split()
+            target_language = request.form.get('conlang')
+            if target_language == "verdurian":
+                for word in words:
+                    output += " " + into_verdurian(word)
+                output = "In Verdurian it's " + output
+            elif target_language == 'pig_latin':
+                for word in words:
+                    output += " " + into_pig_latin(word)
+                output = "In Pig Latin it's " + output
         else:
-            print("I... don't think that you bothered to use the website, you just broke the code!")
+            in_conlang = request.form.get("conlang_input")
+            input_conlang = request.form.get('conlang')
+            if input_conlang == 'verdurian':
+                output = from_verdurian(in_conlang)
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 punctuation = [".", ",", "!", "?"]
@@ -89,7 +93,7 @@ def get_verdurian_dictionary():
         for line in file:
             array = line.strip().split(" - ")
             english_word = array[0][1:]
-            if len(array) > 2:
+            if len(array) == 3:
                 verdurian_word = array[2]
                 verdurian_dictionary[english_word] = verdurian_word
     return verdurian_dictionary
@@ -137,8 +141,11 @@ def from_verdurian(text):
     :param text: string
     """
     verdurian_dictionary = get_verdurian_dictionary()
-    print(verdurian_dictionary)
-    for english_word, verdurian_word in verdurian_dictionary:
-        if text == verdurian_word:
-            return english_word
+    for k, v in verdurian_dictionary.items():
+        # if len(words) > 1:
+        print(k, v)
+        if text == v:
+            return k
+                # print("We found a match! Translating in progress...")
+                # return words[0]
     return text
