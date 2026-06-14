@@ -1,5 +1,7 @@
 """This is the actual code of the conlang translator."""
 from flask import Flask, render_template, request
+from dictionary import Dictionary
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -88,14 +90,12 @@ def into_verdurian(text):
     return verdurian_word
 def get_verdurian_dictionary():
     """Makes verdurian_dictionary available"""
-    verdurian_dictionary = {}
-    with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
-        for line in file:
-            array = line.strip().split(" - ")
-            english_word = array[0][1:]
-            if len(array) == 3:
-                verdurian_word = array[2]
-                verdurian_dictionary[english_word] = verdurian_word
+    verdurian_dictionary = Dictionary(
+        from_lang="english",
+        to_lang="verdurian",
+        corpus_path='verdurian_dictionary.txt'
+    )
+
     return verdurian_dictionary
 def get_verdurian_word(starts_with_capital, ends_with_punctuation, text, verdurian_dictionary):
     """
