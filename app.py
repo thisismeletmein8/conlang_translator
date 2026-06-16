@@ -101,7 +101,6 @@ def get_verdurian_word(text, verdurian_dictionary):
     :param text: string
     :param verdurian_dictionary: dictionary
     """
-    verdurian_word = ""
     verdurian_word = verdurian_dictionary.lookup(text)
 
     return verdurian_word
