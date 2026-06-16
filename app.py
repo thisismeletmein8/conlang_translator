@@ -72,7 +72,7 @@ def into_verdurian(text):
     verdurian_dictionary = get_verdurian_dictionary()
     starts_with_capital = text[0].isupper()
     ends_with_punctuation = text[-1] in punctuation
-    verdurian_word = get_verdurian_word(verdurian_dictionary)
+    verdurian_word = get_verdurian_word(text, verdurian_dictionary)
 
     if not verdurian_word:
         return text
@@ -92,7 +92,7 @@ def get_verdurian_dictionary():
     )
 
     return verdurian_dictionary
-def get_verdurian_word(verdurian_dictionary):
+def get_verdurian_word(text, verdurian_dictionary):
     """
     Docstring for get_verdurian_word
     
@@ -102,7 +102,7 @@ def get_verdurian_word(verdurian_dictionary):
     :param verdurian_dictionary: dictionary
     """
     verdurian_word = ""
-    verdurian_word = verdurian_dictionary.lookup(verdurian_word)
+    verdurian_word = verdurian_dictionary.lookup(text)
 
     return verdurian_word
 def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, text):
