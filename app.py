@@ -69,10 +69,13 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
-    verdurian_dictionary = get_verdurian_dictionary()
+    verdurian_dictionary = get_english_to_verdurian_dictionary()
     starts_with_capital = text[0].isupper()
     ends_with_punctuation = text[-1] in punctuation
-    verdurian_word = get_verdurian_word(text, verdurian_dictionary)
+    if ends_with_punctuation:
+        verdurian_word = get_verdurian_word(text[:-1], verdurian_dictionary)
+    else:
+        verdurian_word = get_verdurian_word(text, verdurian_dictionary)
 
     if not verdurian_word:
         return text
@@ -83,11 +86,20 @@ def into_verdurian(text):
         text
     )
     return verdurian_word
-def get_verdurian_dictionary():
+def get_english_to_verdurian_dictionary():
     """Makes verdurian_dictionary available"""
     verdurian_dictionary = Dictionary(
         from_lang="english",
         to_lang="verdurian",
+        corpus_path='verdurian_dictionary.txt'
+    )
+
+    return verdurian_dictionary
+def get_verdurian_to_english_dictionary():
+    """Makes verdurian_dictionary available"""
+    verdurian_dictionary = Dictionary(
+        from_lang="verdurian",
+        to_lang="english",
         corpus_path='verdurian_dictionary.txt'
     )
 
@@ -101,7 +113,8 @@ def get_verdurian_word(text, verdurian_dictionary):
     :param text: string
     :param verdurian_dictionary: dictionary
     """
-    verdurian_word = verdurian_dictionary.lookup(text)
+    normalized_word = text.lower()
+    verdurian_word = verdurian_dictionary.lookup(normalized_word)
 
     return verdurian_word
 def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, text):
@@ -127,12 +140,21 @@ def from_verdurian(text):
     It goes from Verdurian into English.
     :param text: string
     """
-    verdurian_dictionary = get_verdurian_dictionary()
-    for k, v in verdurian_dictionary.items():
-        # if len(words) > 1:
-        print(k, v)
-        if text == v:
-            return k
-                # print("We found a match! Translating in progress...")
-                # return words[0]
-    return text
+    verdurian_dictionary = get_verdurian_to_english_dictionary()
+    starts_with_capital = text[0].isupper()
+    ends_with_punctuation = text[-1] in punctuation
+    if ends_with_punctuation:
+        normalized_word = text[:-1].lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    else:
+        normalized_word = text.lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    if not english_word:
+        return text
+    english_word = reassemble_word(
+        starts_with_capital,
+        ends_with_punctuation,
+        english_word,
+        text
+    )
+    return english_word
