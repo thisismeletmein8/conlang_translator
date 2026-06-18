@@ -1,5 +1,7 @@
 """This is the actual code of the conlang translator."""
 from flask import Flask, render_template, request
+from dictionary import Dictionary
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -9,20 +11,24 @@ def home():
     output = ""
     if request.method == 'POST':
         print(request.form)
-        in_english = request.form.get("input")
+        if request.form.get("input"):
+            in_english = request.form.get("input")
 # All of the above is window dressing and then some interesting weird systematic code!
-        words = in_english.split()
-        target_language = request.form.get('conlang')
-        if target_language == "verdurian":
-            for word in words:
-                output += " " + into_verdurian(word)
-            output = "In Verdurian it's " + output
-        elif target_language == 'pig_latin':
-            for word in words:
-                output += " " + into_pig_latin(word)
-            output = "In Pig Latin it's " + output
+            words = in_english.split()
+            target_language = request.form.get('conlang')
+            if target_language == "verdurian":
+                for word in words:
+                    output += " " + into_verdurian(word)
+                output = "In Verdurian it's " + output
+            elif target_language == 'pig_latin':
+                for word in words:
+                    output += " " + into_pig_latin(word)
+                output = "In Pig Latin it's " + output
         else:
-            print("I... don't think that you bothered to use the website, you just broke the code!")
+            in_conlang = request.form.get("conlang_input")
+            input_conlang = request.form.get('conlang')
+            if input_conlang == 'verdurian':
+                output = from_verdurian(in_conlang)
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 punctuation = [".", ",", "!", "?"]
@@ -63,15 +69,13 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
-    verdurian_dictionary = get_verdurian_dictionary()
+    verdurian_dictionary = get_english_to_verdurian_dictionary()
     starts_with_capital = text[0].isupper()
     ends_with_punctuation = text[-1] in punctuation
-    verdurian_word = get_verdurian_word(
-        starts_with_capital,
-        ends_with_punctuation,
-        text,
-        verdurian_dictionary
-    )
+    if ends_with_punctuation:
+        verdurian_word = get_verdurian_word(text[:-1], verdurian_dictionary)
+    else:
+        verdurian_word = get_verdurian_word(text, verdurian_dictionary)
 
     if not verdurian_word:
         return text
@@ -82,18 +86,25 @@ def into_verdurian(text):
         text
     )
     return verdurian_word
-def get_verdurian_dictionary():
+def get_english_to_verdurian_dictionary():
     """Makes verdurian_dictionary available"""
-    verdurian_dictionary = {}
-    with open('verdurian_dictionary.txt', 'r', encoding="utf-8") as file:
-        for line in file:
-            array = line.strip().split(" - ")
-            english_word = array[0][1:]
-            if len(array) > 2:
-                verdurian_word = array[2]
-                verdurian_dictionary[english_word] = verdurian_word
+    verdurian_dictionary = Dictionary(
+        from_lang="english",
+        to_lang="verdurian",
+        corpus_path='verdurian_dictionary.txt'
+    )
+
     return verdurian_dictionary
-def get_verdurian_word(starts_with_capital, ends_with_punctuation, text, verdurian_dictionary):
+def get_verdurian_to_english_dictionary():
+    """Makes verdurian_dictionary available"""
+    verdurian_dictionary = Dictionary(
+        from_lang="verdurian",
+        to_lang="english",
+        corpus_path='verdurian_dictionary.txt'
+    )
+
+    return verdurian_dictionary
+def get_verdurian_word(text, verdurian_dictionary):
     """
     Docstring for get_verdurian_word
     
@@ -102,15 +113,8 @@ def get_verdurian_word(starts_with_capital, ends_with_punctuation, text, verduri
     :param text: string
     :param verdurian_dictionary: dictionary
     """
-    verdurian_word = ""
-    if starts_with_capital and ends_with_punctuation:
-        verdurian_word = verdurian_dictionary.get(text[:-1].lower())
-    elif starts_with_capital:
-        verdurian_word = verdurian_dictionary.get(text.lower())
-    elif ends_with_punctuation:
-        verdurian_word = verdurian_dictionary.get(text[:-1])
-    else:
-        verdurian_word = verdurian_dictionary.get(text)
+    normalized_word = text.lower()
+    verdurian_word = verdurian_dictionary.lookup(normalized_word)
 
     return verdurian_word
 def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, text):
@@ -130,3 +134,27 @@ def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, 
         verdurian_word += text[-1]
 
     return verdurian_word
+def from_verdurian(text):
+    """
+    Docstring for from_verdurian
+    It goes from Verdurian into English.
+    :param text: string
+    """
+    verdurian_dictionary = get_verdurian_to_english_dictionary()
+    starts_with_capital = text[0].isupper()
+    ends_with_punctuation = text[-1] in punctuation
+    if ends_with_punctuation:
+        normalized_word = text[:-1].lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    else:
+        normalized_word = text.lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    if not english_word:
+        return text
+    english_word = reassemble_word(
+        starts_with_capital,
+        ends_with_punctuation,
+        english_word,
+        text
+    )
+    return english_word

@@ -18,13 +18,22 @@
         </select>
         <button type="submit">Submit English text</button>
     </form> 
+    <form method="post">
+        <label for="conlang_input">Enter conlang text here</label>
+        <input type="text" id="conlang_input" name="conlang_input">
+        <select name="conlang" id="language" required>
+            <option value="verdurian">Verdurian</option>
+        </select>
+        <button type="submit">Submit conlang text</button>
+    </form>
     <!--Above it's getting the code and below it's displaying the result.-->
+    <p>Into the conlang</p>
     {% if input %}
         <p>You wrote: {{ input }}</p> <!--It does say you wrote and then in pig latin it's-->
     {% endif %}
-    
+
     {% if result %}
-        <p>{{ result }}</p>
+        <p>Your translation result is {{ result }}</p>
     {% endif %}
     </body>
 </html>
