@@ -69,23 +69,27 @@ def into_verdurian(text):
     It translates into Verdurian, an ACTUAL conlang, from English.
     :param text: It lets you pass in English text to translate into Verdurian.
     """
+    text = text.split()
     verdurian_dictionary = get_english_to_verdurian_dictionary()
-    starts_with_capital = text[0].isupper()
-    ends_with_punctuation = text[-1] in punctuation
-    if ends_with_punctuation:
-        verdurian_word = get_verdurian_word(text[:-1], verdurian_dictionary)
-    else:
-        verdurian_word = get_verdurian_word(text, verdurian_dictionary)
+    verdurian_output = ""
+    for word in text:
+        starts_with_capital = word[0].isupper()
+        ends_with_punctuation = word[-1] in punctuation
+        if ends_with_punctuation:
+            verdurian_word = get_verdurian_word(word[:-1], verdurian_dictionary)
+        else:
+            verdurian_word = get_verdurian_word(word, verdurian_dictionary)
 
-    if not verdurian_word:
-        return text
-    verdurian_word = reassemble_word(
-        starts_with_capital,
-        ends_with_punctuation,
-        verdurian_word,
-        text
-    )
-    return verdurian_word
+        if not verdurian_word:
+            return word
+        verdurian_word = reassemble_word(
+            starts_with_capital,
+            ends_with_punctuation,
+            verdurian_word,
+            word
+        )
+        verdurian_output = verdurian_output + " " + verdurian_word
+    return verdurian_output.lstrip()
 def get_english_to_verdurian_dictionary():
     """Makes verdurian_dictionary available"""
     verdurian_dictionary = Dictionary(
