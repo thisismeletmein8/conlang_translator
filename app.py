@@ -144,20 +144,23 @@ def from_verdurian(text):
     :param text: string
     """
     verdurian_dictionary = get_verdurian_to_english_dictionary()
-    starts_with_capital = text[0].isupper()
-    ends_with_punctuation = text[-1] in punctuation
-    if ends_with_punctuation:
-        normalized_word = text[:-1].lower()
-        english_word = verdurian_dictionary.lookup(normalized_word)
-    else:
-        normalized_word = text.lower()
-        english_word = verdurian_dictionary.lookup(normalized_word)
-    if not english_word:
-        return text
-    english_word = reassemble_word(
-        starts_with_capital,
-        ends_with_punctuation,
-        english_word,
-        text
-    )
-    return english_word
+    sentence = ""
+    for word in text:
+        starts_with_capital = word[0].isupper()
+        ends_with_punctuation = word[-1] in punctuation
+        if ends_with_punctuation:
+            normalized_word = word[:-1].lower()
+            english_word = verdurian_dictionary.lookup(normalized_word)
+        else:
+            normalized_word = word.lower()
+            english_word = verdurian_dictionary.lookup(normalized_word)
+        if not english_word:
+            return word
+        english_word = reassemble_word(
+            starts_with_capital,
+            ends_with_punctuation,
+            english_word,
+            word
+        )
+        sentence = sentence + " " + english_word
+    return sentence.strip()
