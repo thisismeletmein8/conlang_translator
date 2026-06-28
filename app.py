@@ -19,7 +19,6 @@ def home():
             if target_language == "verdurian":
                 for word in words:
                     output += " " + into_verdurian(word)
-                output = "In Verdurian it's " + output
             elif target_language == 'pig_latin':
                 for word in words:
                     output += " " + into_pig_latin(word)
