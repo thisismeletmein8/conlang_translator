@@ -40,6 +40,10 @@ if compare(from_verdurian("Ar."), "Yes."):
     failures += 1
 if compare(from_verdurian("impitir"), "absorb"):
     failures += 1
+if compare(into_verdurian("hesitant herbalist"), "ukešec zeřašom"):
+    failures += 1
+if compare(into_verdurian("Fertile encompass!"), "Ofóry impiser!"):
+    failures += 1
 if failures > 0:
     print("At least 1 test failed!")
     sys.exit(1)
