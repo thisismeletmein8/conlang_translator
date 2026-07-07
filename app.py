@@ -13,8 +13,8 @@ def home():
         print(request.form)
         if request.form.get("input"):
             in_english = request.form.get("input")
-# All of the above is window dressing and then some interesting weird systematic code!
             words = in_english.split()
+# All of the above is window dressing and then some interesting weird systematic code!
             target_language = request.form.get('conlang')
             if target_language == "verdurian":
                 for word in words:
@@ -25,9 +25,11 @@ def home():
                 output = "In Pig Latin it's " + output
         else:
             in_conlang = request.form.get("conlang_input")
+            words = in_conlang.split()
             input_conlang = request.form.get('conlang')
             if input_conlang == 'verdurian':
-                output = from_verdurian(in_conlang)
+                for word in words:
+                    output += " " + from_verdurian(word)
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 punctuation = [".", ",", "!", "?"]
@@ -137,30 +139,26 @@ def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, 
         verdurian_word += text[-1]
 
     return verdurian_word
-def from_verdurian(text):
+def from_verdurian(word):
     """
     Docstring for from_verdurian
     It goes from Verdurian into English.
     :param text: string
     """
     verdurian_dictionary = get_verdurian_to_english_dictionary()
-    sentence = ""
-    for word in text:
-        starts_with_capital = word[0].isupper()
-        ends_with_punctuation = word[-1] in punctuation
-        if ends_with_punctuation:
-            normalized_word = word[:-1].lower()
-            english_word = verdurian_dictionary.lookup(normalized_word)
-        else:
-            normalized_word = word.lower()
-            english_word = verdurian_dictionary.lookup(normalized_word)
-        if not english_word:
-            return word
-        english_word = reassemble_word(
-            starts_with_capital,
-            ends_with_punctuation,
-            english_word,
-            word
-        )
-        sentence = sentence + " " + english_word
-    return sentence.strip()
+    starts_with_capital = word[0].isupper()
+    ends_with_punctuation = word[-1] in punctuation
+    if ends_with_punctuation:
+        normalized_word = word[:-1].lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    else:
+        normalized_word = word.lower()
+        english_word = verdurian_dictionary.lookup(normalized_word)
+    if not english_word:
+        return word
+    return reassemble_word(
+        starts_with_capital,
+        ends_with_punctuation,
+        english_word,
+        word
+    )
