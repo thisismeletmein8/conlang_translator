@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
-    <h1>Conlang Translator</h1>
+    <h1><b>Conlang Translator</b></h1>
     <form method="POST">
         <label for="input">Enter text:</label>
         <input type="text" id="input" name="input">
@@ -26,13 +26,13 @@
         </select>
         <button type="submit">Submit conlang text</button>
     </form>
-    <!--Above it's getting the code and below it's displaying the result.-->
+    <!-- Above it's getting the code and below it's displaying the result. -->
         {% if input %}
-        <p>You wrote: {{ input }}</p> <!--It does say you wrote and then in pig latin it's-->
+        <p>You wrote: <em>{{ input }}</em></p> <!-- It does say you wrote and then in pig latin it's -->
     {% endif %}
 
     {% if result %}
-        <p>Your translation result is {{ result }}</p>
+        <p>Your translation result is <em>{{ result }}</em></p>
     {% endif %}
     </body>
 </html>
