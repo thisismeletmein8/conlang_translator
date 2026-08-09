@@ -22,6 +22,10 @@ class Dictionary:
                     english_word = array[0][1:]
                     if len(array) == 3:
                         verdurian_word = array[2]
+                        if "{" in verdurian_word and "}" in verdurian_word:
+                            start = verdurian_word.index("{")
+                            end = verdurian_word.index("}")
+                            verdurian_word = verdurian_word[:start] + verdurian_word[end+2:]
                         self.dictionary[verdurian_word] = english_word
 
     def lookup(self, word):

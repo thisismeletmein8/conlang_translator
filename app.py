@@ -25,8 +25,9 @@ def home():
                 output = "In Pig Latin it's " + output
         else:
             in_conlang = request.form.get("conlang_input")
-            words = in_conlang.split()
             input_conlang = request.form.get('conlang')
+            from_verdurian(in_conlang)
+            words = in_conlang.split()
             if input_conlang == 'verdurian':
                 for word in words:
                     output += " " + from_verdurian(word)
