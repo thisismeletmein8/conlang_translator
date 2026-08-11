@@ -123,7 +123,7 @@ def get_verdurian_word(text, verdurian_dictionary):
     verdurian_word = verdurian_dictionary.lookup(normalized_word)
 
     return verdurian_word
-def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, text):
+def reassemble_word(starts_with_capital, ends_with_punctuation, output_word, text):
     """
     Docstring for reassemble_word
     It reverses get_verdurian_word
@@ -133,13 +133,13 @@ def reassemble_word(starts_with_capital, ends_with_punctuation, verdurian_word, 
     :param text: str
     """
     if starts_with_capital and ends_with_punctuation:
-        verdurian_word = verdurian_word.capitalize() + text[-1]
+        output_word = output_word.capitalize() + text[-1]
     elif starts_with_capital:
-        verdurian_word = verdurian_word.capitalize()
+        output_word = output_word.capitalize()
     elif ends_with_punctuation:
-        verdurian_word += text[-1]
+        output_word += text[-1]
 
-    return verdurian_word
+    return output_word
 def from_verdurian(word):
     """
     Docstring for from_verdurian
