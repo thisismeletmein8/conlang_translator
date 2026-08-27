@@ -1,11 +1,16 @@
 body {
-    background: darkmagenta;
+    background: green;
     color: white;
     font-family: "Nimbus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1 {
     color: black;
+    font-weight: bold;
+    font-family: "Helvetica", sans-serif;
 }
 #small {
     font-size: smaller;
+}
+p.italics {
+    font-style: oblique 11;
 }

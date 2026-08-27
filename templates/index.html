@@ -28,12 +28,14 @@
         <button type="submit">Submit conlang text</button>
     </form>
     <!-- Above it's getting the code and below it's displaying the result. -->
-        {% if input %}
-        <p>You wrote: <em>{{ input }}</em></p> <!-- It does say you wrote and then in pig latin it's -->
+    <div class="italics">
+    {% if input %}
+        <p>You wrote {{ input }}</p> <!-- It does say you wrote and then in pig latin it's -->
     {% endif %}
 
     {% if result %}
-        <p>Your translation result is <em>{{ result }}</em></p>
+        <p>Your translation result is {{ result }}</p>
     {% endif %}
+    </div>
     </body>
 </html>
