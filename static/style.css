@@ -1,10 +1,8 @@
 body {
-    background: green;
-    color: white;
-    font-family: "Nimbus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: burlywood;
+    color: black;
 }
 h1 {
-    color: black;
     font-weight: bold;
     font-family: "Helvetica", sans-serif;
 }
