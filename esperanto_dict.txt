@@ -1,6 +1,3 @@
-      = A =
-
-
 A = indefinite article, not used in Esperanto.
 Aback, to take = surprizi.
 Abaft = posta parto.
@@ -896,13 +893,6 @@ Ay (yes) = jes.
 Aye (always) = ĉiam.
 Azote = azoto.
 Azure = lazuro.
-
-
-
-
-      = B =
-
-
 Babble = babili.
 Babe = infaneto.
 Baboon = paviano.
@@ -1582,13 +1572,6 @@ Button = butono.
 Button-hole = butontruo.
 Buy = aĉeti.
 By means of = per.
-
-
-
-
-      = C =
-
-
 Cab = fiakro.
 Cabal = kabalo.
 Cabbage = brasiko.
@@ -2839,13 +2822,6 @@ Cylinder = cilindro.
 Cymbal = cimbalo.
 Cypress = cipreso.
 Czar = Caro.
-
-
-
-
-      = D =
-
-
 Dab = bateto.
 Daffodil = narciso.
 Dagger = ponardo.
@@ -3614,13 +3590,6 @@ Dynamite = dinamito.
 Dynasty = dinastio.
 Dysentery = disenterio.
 Dyspepsia = dispepsio.
-
-
-
-
-      = E =
-
-
 Each (adj.) = ĉia.
 Each (pronoun) = ĉiu.
 Eager = avida.
@@ -4202,13 +4171,6 @@ Eyebrow = brovo.
 Eyeglasses = lorno.
 Eyelash = okulharo.
 Eyelid = palpebro.
-
-
-
-
-      = F =
-
-
 Fable = fablo.
 Fabric (stuff) = teksaĵo.
 Fabric = fabriko.
@@ -4798,13 +4760,6 @@ Fustian = fusteno.
 Futile = vana.
 Future = estonta.
 Futurity = estonteco.
-
-
-
-
-      = G =
-
-
 Gadfly = tabano.
 Gaff = hokstango.
 Gag = silentigi, buŝumi.
@@ -5214,13 +5169,6 @@ Gymnast = gimnastikisto.
 Gymnasium = gimnastikejo.
 Gypsum = gipso.
 Gyrate = turniĝi.
-
-
-
-
-      = H =
-
-
 Ha! = ha!
 Haberdasher = fadenisto.
 Habit = kutimo.
@@ -5671,13 +5619,6 @@ Hypotenuse = hipotenuzo.
 Hyssop = hisopo.
 Hysterical = histeria.
 Hysterics = histerio.
-
-
-
-
-      = I =
-
-
 I = mi.
 Ibis = ibiso.
 Ice = glacio.
@@ -6261,13 +6202,6 @@ Iteration = ripetado.
 Itinerant = vojaĝanta.
 Ivory = elefantosto.
 Ivy = hedero.
-
-
-
-
-      = J =
-
-
 Jabber = babili.
 Jack, roasting = turnrostilo.
 Jackass = azenviro.
@@ -6370,13 +6304,6 @@ Justify = pravigi.
 Justly = juste.
 Juvenile = juna.
 Juxtaposition = apudmeto.
-
-
-
-
-      = K =
-
-
 Kaleidoscope = kalejdoskopo.
 Kangaroo = didelfo.
 Keel = kilo.
@@ -6453,13 +6380,6 @@ Know (to be acquainted with) = koni.
 Knuckle = artiko.
 Kopeck = kopeko.
 Koran = Korano.
-
-
-
-
-      = L =
-
-
 Label = surskribeto.
 Laborious = laborema.
 Laboratory = laborejo.
@@ -6910,13 +6830,6 @@ Lye = lesivo.
 Lymph = limfo.
 Lynx = linko.
 Lyre = liro.
-
-
-
-
-      = M =
-
-
 Macadam = makadamo.
 Macaroni = makaronio.
 Machine = maŝino.
@@ -7615,13 +7528,6 @@ Mystify = mistifiki.
 Mystification = mistifiko.
 Myth = mito.
 Mythology = mitologio.
-
-
-
-
-      = N =
-
-
 Nadir = nadiro.
 Nail (of finger, etc.) = ungo.
 Nail = najli.
@@ -7870,13 +7776,6 @@ Nutmeg = muskato.
 Nutriment = nutraĵo.
 Nutritious = nutra.
 Nymph = nimfo.
-
-
-
-
-      = O =
-
-
 Oaf = idiotulo.
 Oak = kverko.
 Oakum = stupo.
@@ -8195,13 +8094,6 @@ Ox = bovo.
 Oxide = oksido.
 Oxygen = oksigeno.
 Oyster = ostro.
-
-
-
-
-      = P =
-
-
 Pa = patreto, paĉjo.
 Pace = paŝi.
 Pace (step) = paŝo.
@@ -9441,13 +9333,6 @@ Putty = mastiko.
 Puzzle = enigmo.
 Pyramid = piramido.
 Python = serpentego, pitono.
-
-
-
-
-      = Q =
-
-
 Quack (duck) = anasbleki.
 Quack = ĉarlatano.
 Quackery = ĉarlatanismo.
@@ -9528,13 +9413,6 @@ Quotation = cito.
 Quote = citi.
 Quoth = diras, diris.
 Quotient = dividrezultato.
-
-
-
-
-      = R =
-
-
 Rabbi, Rabbin = rabeno.
 Rabbit = kuniklo.
 Rabble = kanajlaro.
@@ -10351,13 +10229,6 @@ Rust = rustaĵo.
 Rut = radkavo, radsigno.
 Ruthless = kruelega.
 Rye = sekalo.
-
-
-
-
-      = S =
-
-
 Sabbath = dimanĉo.
 Sable (animal) = zibelo.
 Sabot = ligna ŝuo.
@@ -11964,13 +11835,6 @@ Syphilis = sifiliso.
 Syringe = enŝprucigi.
 Syrup = siropo.
 System = sistemo.
-
-
-
-
-      = T =
-
-
 Tabernacle = sanktejo, tendo.
 Table = tablo.
 Table (index) = tabelo.
@@ -12684,13 +12548,6 @@ Tyrannical = tirana—ema.
 Tyranny = tiraneco.
 Tyrant = tirano.
 Tyro = novico.
-
-
-
-
-      = U =
-
-
 Ubiquity = ĉieesto.
 Udder = mamo.
 Ugliness = malbeleco.
@@ -12973,13 +12830,6 @@ Utter = ekparoli.
 Utterance = ekparolo.
 Utterly = tute.
 Uttermost = ekstrema, la plej.
-
-
-
-
-      = V =
-
-
 Vacancy = malplenaĵo.
 Vacant = neokupata.
 Vacate = forlasi.
@@ -13274,13 +13124,6 @@ Vulgarity = vulgareco.
 Vulgate = Latina Biblio.
 Vulnerable = vundebla.
 Vulture = vulturo.
-
-
-
-
-      = W =
-
-
 Wobble = ŝanceli—iĝi.
 Wadding = vato, vataĵo.
 Waddle = balanciĝi, ŝanceliĝi.
@@ -13722,13 +13565,6 @@ Wrongfully = malrajte.
 Wrongly = malrajte, malprave.
 Wroth = kolerega.
 Wry = torda.
-
-
-
-
-      = Y =
-
-
 Yacht = ŝipeto.
 Yard = korto.
 Yard (of ship) = velstango.
@@ -13775,13 +13611,6 @@ Youth (state of) = juneco.
 Youthful = juna.
 Youthfulness = juneco.
 Yule = kristnasko.
-
-
-
-
-      = Z =
-
-
 Zany = ŝercemulo.
 Zeal = fervoro.
 Zealot = fervorulo.

@@ -23,6 +23,9 @@ def home():
                 for word in words:
                     output += " " + into_pig_latin(word)
                 output = "In Pig Latin it's " + output
+            elif target_language == 'esperanto':
+                for word in words:
+                    output = into_esperanto(word)
         else:
             in_conlang = request.form.get("conlang_input")
             input_conlang = request.form.get('conlang')
@@ -163,3 +166,13 @@ def from_verdurian(word):
         english_word,
         word
     )
+def into_esperanto(word):
+    """words: It is the set of words the user puts in"""
+    esperanto_dict = get_english_to_esperanto_dict()
+    return esperanto_dict.lookup(word)
+def get_english_to_esperanto_dict():
+    """
+    Docstring for get_english_to_esperanto_dict
+    It makes an Esperanto dictionary
+    """
+    return Dictionary(from_lang="english", to_lang="esperanto", corpus_path="esperanto_dict.txt")

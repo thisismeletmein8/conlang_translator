@@ -1,6 +1,6 @@
 """The app's test file"""
 import sys
-from app import into_pig_latin, into_verdurian, from_verdurian
+from app import into_pig_latin, into_verdurian, from_verdurian, into_esperanto
 failures = 0
 def compare(real, expected):
     """It's just a nice test that tests if it's working"""
@@ -47,6 +47,8 @@ if compare(into_verdurian("Fertile encompass!"), "Ofóry impiser!"):
 if compare(from_verdurian("velašir"), "elope"):
     failures += 1
 if compare(into_verdurian("Elenico"), "Elenico"):
+    failures += 1
+if compare(into_esperanto("Instructor"), "instruisto"):
     failures += 1
 if failures > 0:
     print("At least 1 test failed!")
