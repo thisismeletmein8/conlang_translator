@@ -169,7 +169,12 @@ def from_verdurian(word):
 def into_esperanto(word):
     """words: It is the set of words the user puts in"""
     esperanto_dict = get_english_to_esperanto_dict()
-    return esperanto_dict.lookup(word.capitalize())
+    word = word.capitalize()
+    punctuation_symbol = ""
+    if word[-1] in punctuation:
+        punctuation_symbol = word[-1]
+        word = word[:-1]
+    return esperanto_dict.lookup(word) + punctuation_symbol
 def get_english_to_esperanto_dict():
     """
     Docstring for get_english_to_esperanto_dict

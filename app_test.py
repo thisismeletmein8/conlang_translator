@@ -50,6 +50,8 @@ if compare(into_verdurian("Elenico"), "Elenico"):
     failures += 1
 if compare(into_esperanto("instructor"), "instruisto"):
     failures += 1
+if compare(into_esperanto("Yes."), "jes."):
+    failures += 1
+print(f"{failures} test(s) failed!")
 if failures > 0:
-    print("At least 1 test failed!")
     sys.exit(1)
