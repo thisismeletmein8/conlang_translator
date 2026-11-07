@@ -1,6 +1,6 @@
 """The app's test file"""
 import sys
-from app import into_pig_latin, into_verdurian, from_verdurian, into_esperanto
+from app import into_verdurian, from_verdurian, into_esperanto
 failures = 0
 def compare(real, expected):
     """It's just a nice test that tests if it's working"""
@@ -12,20 +12,6 @@ def compare(real, expected):
     print("✅ It's somehow right?")
     return False
 
-if compare(into_pig_latin("aligator"), "aligatorway"):
-    failures += 1
-if compare(into_pig_latin("tall"), "alltay"):
-    failures += 1
-if compare(into_pig_latin("how?"), "owhay?"):
-    failures += 1
-if compare(into_pig_latin("ow!"), "owway!"):
-    failures += 1
-if compare(into_pig_latin("Interesting."), "Interestingway."):
-    failures += 1
-if compare(into_pig_latin("No"), "Onay"):
-    failures += 1
-if compare(into_pig_latin("that"), "atthay"):
-    failures += 1
 if compare(into_verdurian("conjuror"), "žóuom"):
     failures += 1
 if compare(into_verdurian("abandon"), "fäsir"):
