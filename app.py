@@ -19,10 +19,6 @@ def home():
             if target_language == "verdurian":
                 for word in words:
                     output += " " + into_verdurian(word)
-            elif target_language == 'pig_latin':
-                for word in words:
-                    output += " " + into_pig_latin(word)
-                output = "In Pig Latin it's " + output
             elif target_language == 'esperanto':
                 for word in words:
                     output = into_esperanto(word)
@@ -37,37 +33,6 @@ def home():
     return render_template('index.html', result=output, input=in_english) # Send it
 # Aand... done.
 punctuation = [".", ",", "!", "?"]
-def into_pig_latin(text): # Supplementary functions
-    """And this goes the other way."""
-    # Get first letter and check if it is capitalized
-    # If so, set starts_with_capital? to True
-    # if not, set starts_with_capital? to False and made a major refactor
-    starts_with_capital = text[0].isupper()
-    last_letter = text[-1:]
-    output = text
-    if last_letter in punctuation:
-        text = text[:-1]
-        output = into_pig_latin(text)
-        print("Output: " + output + " And the last letter is: " + last_letter + " .")
-        output = output + last_letter
-        return output
-    consonant_cluster = ""
-    vowel_position = 0
-    for index, letter in enumerate(text, start=0):
-        if letter in ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]:
-            vowel_position = index
-            break
-        consonant_cluster = consonant_cluster + letter
-    if text[0] in ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]: # the vowels
-        output = output + "way"
-    else:
-        output = output[vowel_position:] + consonant_cluster + "ay" # it uses first_letter
-    # Check if starts_with_capital? is true
-    # If so, capitalize our new first letter
-    # If not, lower case our new first letter
-    if starts_with_capital:
-        output = output.capitalize() # Uppercase
-    return output
 def into_verdurian(text):
     """
     Docstring for into_verdurian
